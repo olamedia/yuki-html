@@ -18,7 +18,7 @@ Sometimes you need to return html tag from class, and be able to modify it later
 So, How?
 ----
     class myImage{
-        function getHtml(){
+        public static function getHtml(){
             return yHtmlTag::create('img', array('src' => 'myimage.png'));
         }
     }
