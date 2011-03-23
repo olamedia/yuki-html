@@ -17,7 +17,6 @@
  * @subpackage html
  * @author olamedia
  * @license http://www.opensource.org/licenses/mit-license.php MIT
- * @version SVN: $Id: yStyleTag.php 1620 2011-03-12 01:46:36Z olamedia@gmail.com $
  */
 class yStyleTag extends yHtmlTag{
     public function __construct($attr = array()){

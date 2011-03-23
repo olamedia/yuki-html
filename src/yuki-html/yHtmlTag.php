@@ -17,7 +17,6 @@
  * @subpackage html
  * @author olamedia
  * @license http://www.opensource.org/licenses/mit-license.php MIT
- * @version SVN: $Id: yHtmlTag.php 1635 2011-03-12 02:40:33Z olamedia@gmail.com $
  */
 class yHtmlTag implements ArrayAccess{
     public $tagName = 'html';
@@ -83,7 +82,7 @@ class yHtmlTag implements ArrayAccess{
             $attrs[] = $name.'="'.$node.'"';
         }
         if ($this->_isSelfClosed){
-            $open = '<'.implode(' ', $attrs).'>';// /
+            $open = '<'.implode(' ', $attrs).'>'; // /
             $close = '';
         }else{
             $open = '<'.implode(' ', $attrs).'>';

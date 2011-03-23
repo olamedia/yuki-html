@@ -17,7 +17,6 @@
  * @subpackage html
  * @author olamedia
  * @license http://www.opensource.org/licenses/mit-license.php MIT
- * @version SVN: $Id: yHtmlAttribute.php 1618 2011-03-10 06:52:35Z olamedia@gmail.com $
  */
 class yHtmlAttribute{
     protected $_name;
