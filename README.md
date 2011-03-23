@@ -26,7 +26,19 @@ So, How?
 Now you can do what you want:
     $img['alt'] = 'My Image!';
     $img['style'] = "border: none;";
-    echo $img;
+    echo $img; // <img src="myimage.png" alt="My Image!" style="border: none;" />
+You even able to get attributes
+    echo $img['src']; // myimage.png
+To remove attributes
+    unset($img['style']);
+    echo $img; // <img src="myimage.png" alt="My Image!" />
+To wrap
+    $a = yHtmlTag::create('a', array('href'=>'/'));
+    $a->appendChild($img);
+    echo $a; // <a href="/"><img src="myimage.png" alt="My Image!" /></a>
+To set text, it will be escaped!
+    $a->setText('click here!');
+    echo $a; // <a href="/">click here!</a>
 
 License
 -------
