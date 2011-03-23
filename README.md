@@ -37,8 +37,8 @@ To wrap
     $a->appendChild($img);
     echo $a; // <a href="/"><img src="myimage.png" alt="My Image!" /></a>
 To set text, it will be escaped!
-    $a->setText('click here!');
-    echo $a; // <a href="/">click here!</a>
+    $a->setText('click here >>');
+    echo $a; // <a href="/">click here &gt;&gt;</a>
 
 License
 -------
