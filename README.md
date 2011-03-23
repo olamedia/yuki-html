@@ -19,3 +19,5 @@ Usage
                 'contents' => 'Page Description'
             )
         );
+    $head['lang'] = 'en';
+    echo $head; // Will output generated html code.
