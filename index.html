@@ -60,8 +60,19 @@
 <h2>Contact</h2>
 <p> (olamedia@gmail.com)
 <br/>      </p>
-
-
+<h2>Basic usage</h2>
+<pre>
+$head = yHtmlTag::create('head');
+$head->appendChild(
+        yHtmlTag::create('title')->setText('Page Title')
+    );
+$head->appendChild(
+        yHtmlTag::create('meta', array(
+            'name'=>'description', 
+            'contents' => 'Page Description'
+        )
+    );
+</pre>
     <h2>Download</h2>
     <p>
       You can download this project in either
