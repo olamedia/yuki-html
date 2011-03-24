@@ -52,7 +52,7 @@ class yHtmlTag implements ArrayAccess{
         'head'=>'yHeadTag',
         'meta'=>'yMetaTag'
     );
-    public function text($text = ''){
+    public function setText($text = ''){
         $textNode = new yTextNode($text);
         if ($this->hasChildNodes()){
             $this->childNodes = array();
@@ -68,8 +68,6 @@ class yHtmlTag implements ArrayAccess{
         return new yHtmlTag($name, $attr, $closed);
     }
     public function __construct($name = 'html', $attr = array(), $closed = false){
-        //parent::__construct($name);
-        //yHtmlHelper::getInstance()->getDom()->appendChild($this);
         $this->tagName = $name;
         foreach ($attr as $k=>$v){
             $this->setAttribute($k, $v);
@@ -93,9 +91,6 @@ class yHtmlTag implements ArrayAccess{
             $inner = implode("\n", $this->childNodes);
         }
         return $open.$inner.$close;
-        return substr($this->C14N(), 0, -strlen($this->tagName) - 4).' />';
-        //}
-        //return $this->C14N();
     }
     public function offsetExists($offset){
         return $this->hasAttribute($offset);
