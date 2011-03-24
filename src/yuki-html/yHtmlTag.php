@@ -17,6 +17,7 @@
  * @subpackage html
  * @author olamedia
  * @license http://www.opensource.org/licenses/mit-license.php MIT
+ * @property-write innerText
  */
 class yHtmlTag implements ArrayAccess{
     public $tagName = 'html';
@@ -135,5 +136,15 @@ class yHtmlTag implements ArrayAccess{
     }
     public function close(){
         $this->_isSelfClosed = true;
+    }
+    public function __set($name, $value){
+        if ($name === 'innerText'){
+            $this->setText($value);
+        }else{
+            $this->setAttribute($name, $value);
+        }
+    }
+    public function __get($name){
+        return $this->getAttribute($name, '');
     }
 }

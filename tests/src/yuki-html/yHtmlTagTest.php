@@ -40,9 +40,12 @@ class yHtmlTagTest extends PHPUnit_Framework_TestCase{
         $this->object = yHtmlTag::create('img', array('src'=>'image.png'));
         $this->assertEquals(true, $this->object->hasAttribute('src'));
         $this->assertEquals('image.png', strval($this->object->getAttribute('src')));
+        $this->assertEquals('image.png', strval($this->object['src']));
         $this->assertEquals('default-value', strval($this->object->getAttribute('src2', 'default-value')));
         $this->assertEquals('<img src="image.png">', strval($this->object));
-
+        $this->object = yHtmlTag::create('b');
+        $this->object->innerText = 'my text';
+        $this->assertEquals('<b>my text</b>', strval($this->object));
         //echo $this->object;
     }
 }
