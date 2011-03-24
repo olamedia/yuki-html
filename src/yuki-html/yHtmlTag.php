@@ -31,7 +31,7 @@ class yHtmlTag implements ArrayAccess{
         return isset($this->attributes[$name]);
     }
     public function setAttribute($name, $value){
-        $this->attributes[$name] = $value;
+        $this->attributes[$name] = new yHtmlAttribute($name, $value);
         return $this;
     }
     public function removeAttribute($name){
@@ -39,7 +39,7 @@ class yHtmlTag implements ArrayAccess{
         return $this;
     }
     public function getAttribute($name, $default = null){
-        return isset($this->attributes[$name])?$this->attributes[$name]:$default;
+        return isset($this->attributes[$name])?$this->attributes[$name]->get():$default;
     }
     public function hasChildNodes(){
         return!!count($this->childNodes);
@@ -51,6 +51,9 @@ class yHtmlTag implements ArrayAccess{
     protected static $_tagMap = array(
         'head'=>'yHeadTag',
         'meta'=>'yMetaTag'
+    );
+    protected static $_selfClosedTags = array(
+        'br', 'img', 'meta', 'link'
     );
     public function setText($text = ''){
         $textNode = new yTextNode($text);
@@ -65,6 +68,9 @@ class yHtmlTag implements ArrayAccess{
             $class = self::$_tagMap[$name];
             return new $class($attr);
         }
+        if (in_array($name, self::$_selfClosedTags)){
+            $closed = true;
+        }
         return new yHtmlTag($name, $attr, $closed);
     }
     public function __construct($name = 'html', $attr = array(), $closed = false){
@@ -76,8 +82,8 @@ class yHtmlTag implements ArrayAccess{
     }
     public function __toString(){
         $attrs = array($this->tagName);
-        foreach ($this->attributes as $name=>$node){
-            $attrs[] = $name.'="'.$node.'"';
+        foreach ($this->attributes as $node){
+            $attrs[] = strval($node);
         }
         if ($this->_isSelfClosed){
             $open = '<'.implode(' ', $attrs).'>'; // /
