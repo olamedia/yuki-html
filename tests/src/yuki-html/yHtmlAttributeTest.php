@@ -36,5 +36,7 @@ class yHtmlAttributeTest extends PHPUnit_Framework_TestCase{
         $this->object->set(array('1', '2'));
         $this->assertEquals('1,2', $this->object->get());
         $this->assertEquals('src="1,2"', $this->object->__toString());
+        $this->object->set('"value"');
+        $this->assertEquals('src="&quot;value&quot;"', $this->object->__toString());
     }
 }

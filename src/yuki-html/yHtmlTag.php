@@ -54,7 +54,7 @@ class yHtmlTag implements ArrayAccess{
         'meta'=>'yMetaTag'
     );
     protected static $_selfClosedTags = array(
-        'br', 'img', 'meta', 'link'
+        'br', 'img', 'meta', 'link', 'input'
     );
     public function setText($text = ''){
         $textNode = new yTextNode($text);
@@ -101,9 +101,6 @@ class yHtmlTag implements ArrayAccess{
     }
     public function offsetExists($offset){
         return $this->hasAttribute($offset);
-    }
-    public function set($name, $value){
-        $this->setAttribute($name, $value);
     }
     /**
      * Sets attribute.
