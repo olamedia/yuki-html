@@ -69,15 +69,15 @@ class yHtmlTag implements ArrayAccess{
             $class = self::$_tagMap[$name];
             return new $class($attr);
         }
-        if (in_array($name, self::$_selfClosedTags)){
-            $closed = true;
-        }
         return new yHtmlTag($name, $attr, $closed);
     }
     public function __construct($name = 'html', $attr = array(), $closed = false){
         $this->tagName = $name;
         foreach ($attr as $k=>$v){
             $this->setAttribute($k, $v);
+        }
+        if (in_array($name, self::$_selfClosedTags)){
+            $closed = true;
         }
         $this->_isSelfClosed = $closed;
     }
@@ -95,7 +95,7 @@ class yHtmlTag implements ArrayAccess{
         }
         $inner = '';
         if (!$this->_isSelfClosed){
-            $inner = implode("\n", $this->childNodes);
+            $inner = implode('', $this->childNodes);
         }
         return $open.$inner.$close;
     }

@@ -20,12 +20,33 @@
  */
 class yTextNode{
     protected $_value = '';
+    /**
+     * Constructor.
+     * @param string $text 
+     */
     public function __construct($text = ''){
         $this->_value = $text;
     }
+    /**
+     * Sets node value.
+     * @param string $value
+     * @return yTextNode 
+     */
+    public function setValue($value){
+        $this->_value = $value;
+        return $this;
+    }
+    /**
+     * Gets node value.
+     * @return string
+     */
     public function getValue(){
         return $this->_value;
     }
+    /**
+     * Returns escaped string value of node.
+     * @return string Escaped node value.
+     */
     public function __toString(){
         return htmlspecialchars($this->_value, ENT_NOQUOTES);
     }

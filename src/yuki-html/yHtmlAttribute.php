@@ -28,25 +28,43 @@ class yHtmlAttribute{
     }
     public function setName($name){
         $this->_name = $name;
+        return $this;
     }
     public function getName(){
         return $this->_name;
     }
+    public function setDelimiter($delimiter = ','){
+        $this->_delimiter = $delimiter;
+        return $this;
+    }
+    public function getDelimiter(){
+        return $this->_delimiter;
+    }
     public function set($value){
-        $this->_value = $value;
+        if (is_array($value)){
+            $this->_value = array();
+            foreach ($value as $x){
+                $x = strval($x);
+                $this->_value[$x] = $x;
+            }
+        }else{
+            $this->_value = $value;
+        }
     }
     public function get(){
         return is_array($this->_value)?implode($this->_delimiter, $this->_value):$this->_value;
     }
     public function push($value){
+        $value = strval($value);
         if (!is_array($this->_value)){
-            $this->_value = array();
+            $this->_value = array($this->_value=>$this->_value);
         }
         $this->_value[$value] = $value;
     }
     public function pop($value){
+        $value = strval($value);
         if (!is_array($this->_value)){
-            $this->_value = array();
+            $this->_value = array($this->_value=>$this->_value);
         }
         unset($this->_value[$value]);
     }
