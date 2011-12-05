@@ -1,5 +1,6 @@
 yuki-html
 =========
+[![Build Status](https://secure.travis-ci.org/olamedia/yuki-html.png)](http://travis-ci.org/olamedia/yuki-html)
 
 Efficient way to create and modify HTML tags.
 
