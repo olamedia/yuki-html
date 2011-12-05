@@ -58,7 +58,7 @@ To wrap
 <pre>
     $a = yHtmlTag::create('a', array('href'=>'/'));
     $a->appendChild($img);
-    echo $a; // &lt;a href="/"><img src="myimage.png" alt="My Image!" />&lt;/a>
+    echo $a; // &lt;a href="/">&lt;img src="myimage.png" alt="My Image!" />&lt;/a>
 </pre>	
 	
 To set text, it will be escaped!
