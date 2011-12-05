@@ -10,15 +10,17 @@
  * file that was distributed with this source code.
  */
 
+namespace yuki\html;
+
 /**
- * yHtmlAttribute
+ * attribute
  *
  * @package yuki
  * @subpackage html
  * @author olamedia
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
-class yHtmlAttribute{
+class attribute{
     protected $_name;
     protected $_value = '';
     protected $_delimiter = ',';

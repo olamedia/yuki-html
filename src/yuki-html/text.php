@@ -10,15 +10,17 @@
  * file that was distributed with this source code.
  */
 
+namespace yuki\html;
+
 /**
- * yTextNode
+ * text
  *
  * @package yuki
  * @subpackage html
  * @author olamedia
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
-class yTextNode{
+class text{
     protected $_value = '';
     /**
      * Constructor.
@@ -30,7 +32,7 @@ class yTextNode{
     /**
      * Sets node value.
      * @param string $value
-     * @return yTextNode 
+     * @return text 
      */
     public function setValue($value){
         $this->_value = $value;
