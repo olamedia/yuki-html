@@ -39,8 +39,14 @@ class yHtmlTag implements ArrayAccess{
         unset($this->attributes[$name]);
         return $this;
     }
+    /**
+     * Gets tag attribute.
+     * @param string $name
+     * @param mixed $default
+     * @return yHtmlAttribute
+     */
     public function getAttribute($name, $default = null){
-        return isset($this->attributes[$name])?$this->attributes[$name]->get():$default;
+        return isset($this->attributes[$name])?$this->attributes[$name]:$default;
     }
     public function hasChildNodes(){
         return!!count($this->childNodes);
@@ -84,7 +90,7 @@ class yHtmlTag implements ArrayAccess{
     public function __toString(){
         $attrs = array($this->tagName);
         foreach ($this->attributes as $node){
-            $attrs[] = strval($node);
+            $attrs[] = $node->getAttributeString();
         }
         if ($this->_isSelfClosed){
             $open = '<'.implode(' ', $attrs).'>'; // /

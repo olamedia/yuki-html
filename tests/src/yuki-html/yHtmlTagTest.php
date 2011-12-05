@@ -46,6 +46,11 @@ class yHtmlTagTest extends PHPUnit_Framework_TestCase{
         $this->object = yHtmlTag::create('b');
         $this->object->innerText = 'my text';
         $this->assertEquals('<b>my text</b>', strval($this->object));
+        $this->object->value = 'hi';
+        $this->assertEquals('hi', strval($this->object->value));
+        $this->assertEquals(true, isset($this->object['value']));
+        unset($this->object['value']);
+        $this->assertEquals(false, isset($this->object['value']));
         //echo $this->object;
     }
 }

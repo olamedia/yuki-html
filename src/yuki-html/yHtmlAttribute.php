@@ -68,8 +68,15 @@ class yHtmlAttribute{
         }
         unset($this->_value[$value]);
     }
-    public function __toString(){
+    public function getAttributeString(){
         return $this->_name.'="'.htmlspecialchars($this->get()).'"';
+    }
+    /**
+     * Gets value string
+     * @return string
+     */
+    public function __toString(){
+        return strval($this->get());
     }
 }
 

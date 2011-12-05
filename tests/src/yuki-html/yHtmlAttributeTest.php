@@ -33,7 +33,8 @@ class yHtmlAttributeTest extends PHPUnit_Framework_TestCase{
         $this->assertEquals('value', $this->object->get());
         $this->object->set(array('1', '2'));
         $this->assertEquals('1,2', $this->object->get());
-        $this->assertEquals('src="1,2"', $this->object->__toString());
+        $this->assertEquals('1,2', $this->object->__toString());
+        $this->assertEquals('src="1,2"', $this->object->getAttributeString());
         $this->object->push(3);
         $this->assertEquals('1,2,3', $this->object->get());
         var_dump($this->object);
@@ -52,6 +53,6 @@ class yHtmlAttributeTest extends PHPUnit_Framework_TestCase{
         $this->object->pop(4);
         $this->assertEquals('', $this->object->get());
         $this->object->set('"value"');
-        $this->assertEquals('src="&quot;value&quot;"', $this->object->__toString());
+        $this->assertEquals('src="&quot;value&quot;"', $this->object->getAttributeString());
     }
 }

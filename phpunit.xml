@@ -1,0 +1,9 @@
+<phpunit>
+  <testsuites>
+    <testsuite name="yuki-testsuite" bootstrap="tests/bootstrap.php">
+      <file>tests/src/yuki-html/yHtmlAttributeTest.php</file>
+      <file>tests/src/yuki-html/yHtmlTagTest.php</file>
+      <file>tests/src/yuki-html/yTextNodeTest.php</file>
+    </testsuite>
+  </testsuites>
+</phpunit>
