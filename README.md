@@ -84,10 +84,6 @@ To set text, it will be escaped!
     echo $a; // <a href="/">click here &gt;&gt;</a>
 ```
 
-License
--------
-MIT
-
 Usage
 -----
 
@@ -108,3 +104,34 @@ Usage
     $head['lang'] = 'en';
     echo $head; // Will output generated html code.
 ```
+
+About
+=====
+
+Requirements
+------------
+
+- Any flavor of PHP 5.3 should do
+- [optional] PHPUnit 3.5+ to execute the test suite (phpunit --version)
+
+Submitting bugs and feature requests
+------------------------------------
+
+Bugs and feature request are tracked on [Github](https://github.com/olamedia/yuki-html/issues)
+
+Author
+------
+
+olamedia - <olamedia@gmail.com><br />
+See also the list of [contributors](https://github.com/olamedia/yuki-html/contributors) which participated in this project.
+
+License
+-------
+
+yuki-html is licensed under the MIT License - see the LICENSE file for details
+
+Acknowledgements
+----------------
+
+This library is inspired by symfony (TagHelper), kohana (HTML) and other frameworks
+
