@@ -7,6 +7,8 @@ Efficient way to create and modify HTML tags.
 Why you should use it
 ---------------------
 Sometimes you need to return html tag from class, and be able to modify it later:
+
+<pre>
     class myImage{
         public static function getHtml(){
             return '<img src="myimage.png" />';
@@ -15,31 +17,56 @@ Sometimes you need to return html tag from class, and be able to modify it later
     $img = myImage::getHtml();
     // I wanna add alt and style attributes before output, but how I can?
     echo $img;
+</pre>	
+	
 
 So, How?
 ----
+
+<pre>
     class myImage{
         public static function getHtml(){
             return yHtmlTag::create('img', array('src' => 'myimage.png'));
         }
     }
     $img = myImage::getHtml();
+</pre>	
+	
 Now you can do what you want:
+
+<pre>
     $img['alt'] = 'My Image!';
     $img['style'] = "border: none;";
     echo $img; // <img src="myimage.png" alt="My Image!" style="border: none;" />
+</pre>
+
 You even able to get attributes
+
+<pre>
     echo $img['src']; // myimage.png
+</pre>	
+	
 To remove attributes
+
+<pre>
     unset($img['style']);
     echo $img; // <img src="myimage.png" alt="My Image!" />
+</pre>
+	
 To wrap
+
+<pre>
     $a = yHtmlTag::create('a', array('href'=>'/'));
     $a->appendChild($img);
     echo $a; // <a href="/"><img src="myimage.png" alt="My Image!" /></a>
+</pre>	
+	
 To set text, it will be escaped!
+
+<pre>
     $a->setText('click here >>');
     echo $a; // <a href="/">click here &gt;&gt;</a>
+</pre>
 
 License
 -------
@@ -47,6 +74,8 @@ MIT
 
 Usage
 -----
+
+<pre>
     $head = yHtmlTag::create('head');
     $head->appendChild(
             yHtmlTag::create('title')->setText('Page Title')
@@ -59,3 +88,4 @@ Usage
         );
     $head['lang'] = 'en';
     echo $head; // Will output generated html code.
+</pre>
