@@ -9,6 +9,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
-foreach (array('attribute', 'tag') as $tag){
+foreach (array('attribute', 'tag', 'text') as $tag){
     require_once dirname(__FILE__).'/yuki-html/'.$tag.'.php';
 }
