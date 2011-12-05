@@ -24,9 +24,10 @@ So, How?
 ----
 
 <pre>
+	<strong>use yuki\html\tag;</strong>
     class myImage{
         public static function getHtml(){
-            return yHtmlTag::create('img', array('src' => 'myimage.png'));
+            return tag::create('img', array('src' => 'myimage.png'));
         }
     }
     $img = myImage::getHtml();
@@ -56,7 +57,8 @@ To remove attributes
 To wrap
 
 <pre>
-    $a = yHtmlTag::create('a', array('href'=>'/'));
+	use yuki\html\tag;
+    $a = tag::create('a', array('href'=>'/'));
     $a->appendChild($img);
     echo $a; // &lt;a href="/">&lt;img src="myimage.png" alt="My Image!" />&lt;/a>
 </pre>	
@@ -76,12 +78,13 @@ Usage
 -----
 
 <pre>
-    $head = yHtmlTag::create('head');
+	use yuki\html\tag;
+    $head = tag::create('head');
     $head->appendChild(
-            yHtmlTag::create('title')->setText('Page Title')
+            tag::create('title')->setText('Page Title')
         );
     $head->appendChild(
-            yHtmlTag::create('meta', array(
+            tag::create('meta', array(
                 'name'=>'description', 
                 'contents' => 'Page Description'
             )
