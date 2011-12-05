@@ -65,7 +65,7 @@ To set text, it will be escaped!
 
 <pre>
     $a->setText('click here >>');
-    echo $a; // &lt;a href="/">click here &gt;&gt;</a>
+    echo $a; // &lt;a href="/">click here &gt;&gt;&lt;/a>
 </pre>
 
 License
