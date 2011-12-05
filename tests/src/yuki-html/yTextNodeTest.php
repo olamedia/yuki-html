@@ -28,14 +28,14 @@ class yTextNodeTest extends PHPUnit_Framework_TestCase{
      * @todo Implement testGetValue().
      */
     public function testAll(){
-        $node = new yTextNode('test');
+        $node = new \yuki\html\text('test');
         $this->assertEquals('test', $node->getValue());
         $this->assertEquals('test', strval($node));
-        $node = new yTextNode('<test>');
+        $node = new \yuki\html\text('<test>');
         $this->assertEquals('<test>', $node->getValue());
         $this->assertEquals('&lt;test&gt;', strval($node));
         // Quotes should not be escaped - we're outside of tag:
-        $node = new yTextNode('"test"'); 
+        $node = new \yuki\html\text('"test"'); 
         $this->assertEquals('"test"', $node->getValue());
         $this->assertEquals('"test"', strval($node));
         $node->setValue('test2');

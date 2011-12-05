@@ -10,15 +10,17 @@
  * file that was distributed with this source code.
  */
 
+namespace yuki\html;
+
 /**
- * yHtmlAttribute
+ * attribute
  *
  * @package yuki
  * @subpackage html
  * @author olamedia
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  */
-class yHtmlAttribute{
+class attribute{
     protected $_name;
     protected $_value = '';
     protected $_delimiter = ',';
@@ -41,10 +43,10 @@ class yHtmlAttribute{
         return $this->_delimiter;
     }
     public function set($value){
-        if (is_array($value)){
+        if (\is_array($value)){
             $this->_value = array();
             foreach ($value as $x){
-                $x = strval($x);
+                $x = \strval($x);
                 $this->_value[$x] = $x;
             }
         }else{
@@ -52,7 +54,7 @@ class yHtmlAttribute{
         }
     }
     public function get(){
-        return is_array($this->_value)?implode($this->_delimiter, $this->_value):$this->_value;
+        return \is_array($this->_value)?\implode($this->_delimiter, $this->_value):$this->_value;
     }
     public function push($value){
         $value = strval($value);
@@ -62,8 +64,8 @@ class yHtmlAttribute{
         $this->_value[$value] = $value;
     }
     public function pop($value){
-        $value = strval($value);
-        if (!is_array($this->_value)){
+        $value = \strval($value);
+        if (!\is_array($this->_value)){
             $this->_value = array($this->_value=>$this->_value);
         }
         unset($this->_value[$value]);
@@ -76,7 +78,7 @@ class yHtmlAttribute{
      * @return string
      */
     public function __toString(){
-        return strval($this->get());
+        return \strval($this->get());
     }
 }
 

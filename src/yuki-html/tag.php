@@ -10,8 +10,10 @@
  * file that was distributed with this source code.
  */
 
+namespace yuki\html;
+
 /**
- * yHtmlTag
+ * tag
  *
  * @package yuki
  * @subpackage html
@@ -19,20 +21,20 @@
  * @license http://www.opensource.org/licenses/mit-license.php MIT
  * @property-write innerText
  */
-class yHtmlTag implements ArrayAccess{
+class tag implements \ArrayAccess{
     public $tagName = 'html';
     protected $_attr = array();
     protected $_isSelfClosed = false;
     public $childNodes = array();
     public $attributes = array();
     public function hasAttributes(){
-        return!!count($this->attributes);
+        return!!\count($this->attributes);
     }
     public function hasAttribute($name){
         return isset($this->attributes[$name]);
     }
     public function setAttribute($name, $value){
-        $this->attributes[$name] = new yHtmlAttribute($name, $value);
+        $this->attributes[$name] = new attribute($name, $value);
         return $this;
     }
     public function removeAttribute($name){
@@ -43,13 +45,13 @@ class yHtmlTag implements ArrayAccess{
      * Gets tag attribute.
      * @param string $name
      * @param mixed $default
-     * @return yHtmlAttribute
+     * @return attribute
      */
     public function getAttribute($name, $default = null){
         return isset($this->attributes[$name])?$this->attributes[$name]:$default;
     }
     public function hasChildNodes(){
-        return!!count($this->childNodes);
+        return!!\count($this->childNodes);
     }
     public function appendChild($child){
         $this->childNodes[] = $child;
@@ -63,7 +65,7 @@ class yHtmlTag implements ArrayAccess{
         'br', 'img', 'meta', 'link', 'input'
     );
     public function setText($text = ''){
-        $textNode = new yTextNode($text);
+        $textNode = new text($text);
         if ($this->hasChildNodes()){
             $this->childNodes = array();
         }
@@ -75,7 +77,7 @@ class yHtmlTag implements ArrayAccess{
             $class = self::$_tagMap[$name];
             return new $class($attr);
         }
-        return new yHtmlTag($name, $attr, $closed);
+        return new self($name, $attr, $closed);
     }
     public function __construct($name = 'html', $attr = array(), $closed = false){
         $this->tagName = $name;
@@ -101,7 +103,7 @@ class yHtmlTag implements ArrayAccess{
         }
         $inner = '';
         if (!$this->_isSelfClosed){
-            $inner = implode('', $this->childNodes);
+            $inner = \implode('', $this->childNodes);
         }
         return $open.$inner.$close;
     }
@@ -112,7 +114,7 @@ class yHtmlTag implements ArrayAccess{
      * Sets attribute.
      * 
      * @param string $offset
-     * @return yHtmlAttribute
+     * @return attribute
      */
     public function offsetGet($offset){
         return $this->getAttribute($offset);
@@ -126,11 +128,11 @@ class yHtmlTag implements ArrayAccess{
     /**
      *
      * @param string $name
-     * @return yHtmlAttribute
+     * @return attribute
      */
     public function forceAttribute($name){
         if (!isset($this->_attr[$name])){
-            $this->_attr[$name] = new yHtmlAttribute($name, '');
+            $this->_attr[$name] = new attribute($name, '');
         }
         return $this->_attr[$name];
     }
@@ -151,3 +153,5 @@ class yHtmlTag implements ArrayAccess{
         return $this->getAttribute($name, '');
     }
 }
+
+
