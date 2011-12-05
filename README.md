@@ -11,7 +11,7 @@ Sometimes you need to return html tag from class, and be able to modify it later
 <pre>
     class myImage{
         public static function getHtml(){
-            return '<img src="myimage.png" />';
+            return '&lt;img src="myimage.png" />';
         }
     }
     $img = myImage::getHtml();
@@ -37,7 +37,7 @@ Now you can do what you want:
 <pre>
     $img['alt'] = 'My Image!';
     $img['style'] = "border: none;";
-    echo $img; // <img src="myimage.png" alt="My Image!" style="border: none;" />
+    echo $img; // &lt;img src="myimage.png" alt="My Image!" style="border: none;" />
 </pre>
 
 You even able to get attributes
@@ -50,7 +50,7 @@ To remove attributes
 
 <pre>
     unset($img['style']);
-    echo $img; // <img src="myimage.png" alt="My Image!" />
+    echo $img; // &lt;img src="myimage.png" alt="My Image!" />
 </pre>
 	
 To wrap
@@ -58,14 +58,14 @@ To wrap
 <pre>
     $a = yHtmlTag::create('a', array('href'=>'/'));
     $a->appendChild($img);
-    echo $a; // <a href="/"><img src="myimage.png" alt="My Image!" /></a>
+    echo $a; // &lt;a href="/"><img src="myimage.png" alt="My Image!" />&lt;/a>
 </pre>	
 	
 To set text, it will be escaped!
 
 <pre>
     $a->setText('click here >>');
-    echo $a; // <a href="/">click here &gt;&gt;</a>
+    echo $a; // &lt;a href="/">click here &gt;&gt;</a>
 </pre>
 
 License
